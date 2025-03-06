@@ -1,16 +1,17 @@
- async function users() {
+ async function posts() {
 
      try {
-       const response = await fetch("https://jsonplaceholder.typicode.com/users");
+       const response = await fetch("https://jsonplaceholder.typicode.com/posts");
         const data = await response.json();
-        const userList = document.getElementById('userList');
-       data.forEach(user => {
-            const li = document.createElement('li');
-            const btn = document.createElement('button');
-             li.textContent = `${user.name} - ${user.email}`;
-             btn.className="btn btn-danger";
-            btn.innerHTML='click me !'
-            userList.appendChild(li,btn);
+        const postList = document.getElementById('main');
+       data.forEach(post => {
+            const div = document.createElement('div');
+            const p = document.createElement('p');
+            const p2 = document.createElement('p');
+            div.className="post";
+             p.textContent = `${post.title}`;
+             p2.textContent = `${post.body}`;
+            postList.appendChild(div,p,p2);
          });
 
      }
@@ -21,13 +22,5 @@
 
  }
 
- users();
+ posts();
 
-// const btn = document.createElement('button');
-// btn.innerHTML='click me';
-
-// const main = document.getElementById('main');
-
-// btn.className="btn btn-danger"
-
-// main.appendChild(btn)
